@@ -76,4 +76,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 }); 
 
-alert("This website uses affiliate links. If you make a purchase through these links, we may earn a commission at no extra cost to you. Thank you for your support!");
+function getTodayString() {
+    const now = new Date();
+    return now.getFullYear() + '-' + (now.getMonth()+1) + '-' + now.getDate();
+}
+
+const today = getTodayString();
+    // --- Affiliate Alert: Show only once per day ---
+const affiliateAlertLastShown = localStorage.getItem('affiliateAlertLastShown');
+if (affiliateAlertLastShown !== today) {
+    alert("This website uses affiliate links. If you make a purchase through these links, we may earn a commission at no extra cost to you. Thank you for your support!");
+    localStorage.setItem('affiliateAlertLastShown', today);
+}
